@@ -166,7 +166,7 @@ def create_yes_no_chart(df, col, title):
     yes_count = df[col].astype(str).str.lower().str.contains('yes').sum()
     total = df.shape[0]
     no_count = total - yes_count
-    yes_percent = (yes_count / total) * 100 if total > 0 else 0
+    yes_percent = (yes_count / total)  if total > 0 else 0
     
     data = pd.DataFrame({
         'Status': ['Yes', 'No'],
@@ -286,4 +286,5 @@ with tab2:
         ratios_display = ratios_df.rename(columns=ratio_mapping)
         cols_to_show = ['school_name', 'enrolled_students'] + list(ratio_mapping.values())
         
+
         st.dataframe(ratios_display[cols_to_show], use_container_width=True, height=500)
